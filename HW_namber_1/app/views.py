@@ -34,4 +34,4 @@ def workdir_view(request):
     # который возвращает список файлов в рабочей 
     # директории
     os.listdir(path='.')
-    raise NotImplemented
+    raise NotImplementedError
