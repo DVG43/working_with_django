@@ -23,9 +23,16 @@ DATA = {
 
 def ask_dish(request):
     name_dish = request.GET.get("name_dish")
-    quwontaty = request.GET.get("servings", 1)
+    quwontaty = int(request.GET.get("servings", 1))
     print(quwontaty)
-    return HttpResponse(f'Введено блюдо {name_dish}')
+    #return HttpResponse(f'Введено блюдо {name_dish}')
+    context = DATA[name_dish]
+    if quwontaty > 1:
+        for value in context:
+            context[value] *= quwontaty
+    print(context)
+    return render(request, 'calculator/index.html', context)
+
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
