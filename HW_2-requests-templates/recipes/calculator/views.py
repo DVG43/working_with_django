@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+
 from django.shortcuts import render
 
 DATA = {
@@ -18,6 +20,12 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
+
+def ask_dish(request):
+    name_dish = request.GET.get("name_dish")
+    quwontaty = request.GET.get("servings", 1)
+    print(quwontaty)
+    return HttpResponse(f'Введено блюдо {name_dish}')
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
