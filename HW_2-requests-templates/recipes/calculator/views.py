@@ -26,10 +26,12 @@ def ask_dish(request):
     quwontaty = int(request.GET.get("servings", 1))
     print(quwontaty)
     #return HttpResponse(f'Введено блюдо {name_dish}')
-    context = DATA[name_dish]
+    my_dish = DATA[name_dish]
     if quwontaty > 1:
-        for value in context:
-            context[value] *= quwontaty
+        for value in my_dish:
+            my_dish[value] *= quwontaty
+
+    context = {'recipe': my_dish}
     print(context)
     return render(request, 'calculator/index.html', context)
 
