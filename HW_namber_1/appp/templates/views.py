@@ -4,7 +4,7 @@ import os
 import datetime
 
 def home_view(request):
-    template_name = 'app/home.html'
+    template_name = 'appp/home.html'
     # впишите правильные адреса страниц, используя
     # функцию `reverse`
     pages = {
@@ -25,7 +25,7 @@ def time_view(request):
     # обратите внимание – здесь HTML шаблона нет, 
     # возвращается просто текст
     current_time = None
-    msg = f'Текущее время: {current_time}'
+    msg = f'Текущее время: {datetime. datetime.now().time()}'
     return HttpResponse(msg)
 
 
